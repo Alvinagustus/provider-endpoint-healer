@@ -24,6 +24,15 @@ hermes plugins install Alvinagustus/provider-endpoint-healer
 hermes plugins enable provider-endpoint-healer
 ```
 
+## Relationship to fallback_model
+PEH does not replace Hermes' built-in `fallback_model`. Use `fallback_model` for automatic
+provider failover; PEH provides health status and recommendations.
+
+## Compatibility
+- Hermes >= 0.23.0
+- Python 3.10+
+- No required dependencies (stdlib only).
+
 ## Configure
 
 Settings live under `plugins.entries.provider-endpoint-healer.settings` in your Hermes `config.yaml` (see `examples/config.yaml`):
