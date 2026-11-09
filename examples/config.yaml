@@ -1,0 +1,22 @@
+# Add this to your Hermes config.yaml
+plugins:
+  entries:
+    provider-endpoint-healer:
+      settings:
+        primary: openrouter:claude-sonnet
+        cooldown_s: 60
+        probe_timeout_s: 3
+        probe_on_session_start: true
+        endpoints:
+          - id: openrouter:claude-sonnet
+            provider: openrouter
+            model: anthropic/claude-sonnet-4
+            base_url: https://openrouter.ai/api/v1
+            capabilities: [chat, code]
+            cost_per_1k: 0.003
+          - id: openrouter:deepseek-v3
+            provider: openrouter
+            model: deepseek/deepseek-chat
+            base_url: https://openrouter.ai/api/v1
+            capabilities: [chat, code]
+            cost_per_1k: 0.0005

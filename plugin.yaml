@@ -1,0 +1,33 @@
+name: provider-endpoint-healer
+version: "0.1.0"
+description: "Status and health listing for configured model endpoints. Probes them on session start and via /peh, and recommends the best candidate. Reports only; it does not switch providers."
+author: Alvinagustus
+kind: standalone
+license: MIT
+homepage: https://github.com/Alvinagustus/provider-endpoint-healer
+tags: [providers, health, endpoints]
+requires_hermes: ">=0.23.0"
+provides_tools: []
+provides_hooks:
+  - on_session_start
+config_schema:
+  endpoints:
+    type: list
+    default: []
+    description: "Endpoints to watch. Each item: id, base_url (http/https), and optionally provider, model, capabilities (list), cost_per_1k."
+  primary:
+    type: str
+    default: ""
+    description: "Id of your primary endpoint (shown as such in /peh)."
+  cooldown_s:
+    type: int
+    default: 60
+    description: "Seconds an unreachable endpoint is excluded from recommendations."
+  probe_timeout_s:
+    type: float
+    default: 3.0
+    description: "Per-endpoint probe timeout in seconds."
+  probe_on_session_start:
+    type: bool
+    default: true
+    description: "Probe all endpoints in the background when a session starts."
